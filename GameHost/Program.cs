@@ -13,7 +13,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 app.UseCors("default");
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "GameHost is up and running!");
 app.MapGet("/startGame", gameHost.StartGame);
 app.MapGet("/tryYourLuck", gameHost.TryYourLuck);
 app.MapGet("/revealSolution", gameHost.revealSolution);

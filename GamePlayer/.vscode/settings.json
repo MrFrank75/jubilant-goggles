@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/0a1446ba-d56d-43f9-bdba-4c7118d354b2/AppServices/subscriptions/0a1446ba-d56d-43f9-bdba-4c7118d354b2/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/liviojubilantgoggles-client",
+    "appService.deploySubpath": "."
+}

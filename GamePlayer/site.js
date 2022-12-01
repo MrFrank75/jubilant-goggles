@@ -1,6 +1,6 @@
 
 
-var apiBaseAddressToCall = "http://localhost:5077";
+var apiBaseAddressToCall = "https://liviojubilantgogglesserver.azurewebsites.net";
 
 function startGame(){
      $.ajax({

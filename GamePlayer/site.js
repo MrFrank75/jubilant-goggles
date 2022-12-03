@@ -1,12 +1,32 @@
 
 
 var apiBaseAddressToCall = "https://liviojubilantgogglesserver.azurewebsites.net";
+var bearerToken = ""
+
+function getToken(){
+    $.ajax({
+        url: "/.auth/me",
+        cache: false,
+        type: "GET",
+        success: function(response) {
+            bearerToken = response[0].access_token;
+        },
+        error: function(xhr) {
+            console.error(xhr);
+            console.error(xhr.responseText);
+        }
+    });
+}
 
 function startGame(){
+    console.log("Bearer token is:" + bearerToken);
      $.ajax({
         url: apiBaseAddressToCall + "/startGame",
         cache: false,
         type: "GET",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('X-MS-TOKEN-AAD-ACCESS-TOKEN', 'Bearer ' + bearerToken);
+        },
         success: function(response) {
             document.getElementById('playerGuid').value = response;
             document.getElementById('playButton').disabled = false;
@@ -16,7 +36,7 @@ function startGame(){
             document.getElementById('yourGuess').value ='';              
         },
         error: function(xhr) {
-            alert(xhr.responseText);
+            console.log(xhr.responseText);
         }
     });
 
@@ -69,3 +89,6 @@ function revealSolution(){
         }
     });
 }
+
+//set a global variable with the token
+getToken();

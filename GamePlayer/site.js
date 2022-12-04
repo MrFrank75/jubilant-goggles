@@ -56,11 +56,17 @@ function tryYourLuck(){
         cache: false,
         type: "GET",
         success: function(response) {
-            let answerText = "Wrong answer"
-            if (response==true){
+            let answerText = "0"
+            if (response==0){
                 answerText = "CORRECT! Press Start Game for a new match";
                 document.getElementById('playButton').disabled = true;
                 document.getElementById('revealSolution').disabled = true;
+            }
+            if (response==1){
+                answerText = "Your number is greater than the solution...";
+            }
+            if (response==-1){
+                answerText = "Your number is smaller than the solution...";
             }
             document.getElementById('answer').innerText = answerText;
         },

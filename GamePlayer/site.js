@@ -46,6 +46,7 @@ function tryYourLuck(){
 
     let guid = document.getElementById('playerGuid').value;
     let guess = document.getElementById('yourGuess').value;
+    document.getElementById('answer').innerText = "Guessing...";
 
     $.ajax({
         url: apiBaseAddressToCall + "/tryYourLuck",

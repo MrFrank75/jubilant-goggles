@@ -31,7 +31,6 @@ public class GameHost{
         }
         
         if (guess > playerData.Value){
-            _playerGuids.Remove(playerData);
             return 1;
         }
 

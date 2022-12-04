@@ -13,7 +13,8 @@ public class GameHost{
         return playerGuid.ToString();
     }
 
-    public bool TryYourLuck(string guid, int guess){
+    // returns -1 if the guess is lower, 0 if it is the same, 1 if the guess is higher
+    public int TryYourLuck(string guid, int guess){
         string guidRegexValidator = @"^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$";
         Regex guidRegex = new Regex(guidRegexValidator);
 
@@ -26,10 +27,15 @@ public class GameHost{
         var playerData = _playerGuids.Where(x=>x.Key.Equals(Guid.Parse(guid))).Single();
         if (guess == playerData.Value){
             _playerGuids.Remove(playerData);
-            return true;
+            return 0;
         }
         
-        return false;
+        if (guess > playerData.Value){
+            _playerGuids.Remove(playerData);
+            return 1;
+        }
+
+        return -1;
     }
 
     public int revealSolution(string guid){

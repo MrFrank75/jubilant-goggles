@@ -25,7 +25,7 @@ function startGame(){
         cache: false,
         type: "GET",
         beforeSend: function (xhr) {
-            xhr.setRequestHeader('X-MS-TOKEN-AAD-ACCESS-TOKEN', 'Bearer ' + bearerToken);
+            xhr.setRequestHeader('Bearer', bearerToken);
         },
         success: function(response) {
             document.getElementById('playerGuid').value = response;

@@ -1,6 +1,6 @@
 
 
-var apiBaseAddressToCall = "https://liviojubilantgogglesserver.azurewebsites.net";
+var apiBaseAddressToCall = "https://livio-guessomatic-server.azurewebsites.net";
 var bearerToken = ""
 
 function getToken(){
